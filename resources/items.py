@@ -1,6 +1,3 @@
-import sqlite3
-from sqlalchemy.exc import SQLAlchemyError
-import json
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.items import ItemModel

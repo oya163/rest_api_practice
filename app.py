@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 from security import authenticate, identity
@@ -6,7 +6,7 @@ from resources.user import UserRegister
 from resources.items import Item, ItemList
 from resources.store import Store, StoreList
 
-from resources.db import db
+from db import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
