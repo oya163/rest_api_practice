@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -8,7 +10,9 @@ from resources.store import Store, StoreList
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+# If on heroku or environ variable defined, then connect to DATABASE_URL
+# else connect to sqlite:///datab.db
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///datab.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 app.secret_key = 'oyesh'
 api = Api(app)
