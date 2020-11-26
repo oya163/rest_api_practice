@@ -15,6 +15,9 @@ app = Flask(__name__)
 # else connect to sqlite:///datab.db
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+# It helps to propagate the errors generated from
+# flask extensions like flask-jwt, flask-jwt-extended
+app.config['PROPAGATE_EXCEPTIONS']=True;
 app.secret_key = 'oyesh'
 api = Api(app)
 
